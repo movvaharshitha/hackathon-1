@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GITAM College Landing Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #004d99;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        #about img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .auth-form {
+            display: none;
+        }
+        .auth-form.active {
+            display: block;
+        }
+        .auth-form input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .auth-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #004d99;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .auth-form button:hover {
+            background-color: #003366;
+        }
+        .event-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e6f0ff;
+            border-radius: 5px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .event-item img {
+            max-width: 150px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .event-item button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #ff4d4d;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .event-item button:hover {
+            background-color: #cc0000;
+        }
+        footer {
+            background-color: #004d99;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #addEventForm button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #addEventForm button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to GITAM College</h1>
+            <p>Your gateway to excellence in education and beyond.</p>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#" onclick="showLogin()">Login</a></li>
+                    <li><a href="#" onclick="showSignup()">Signup</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>About GITAM College</h2>
+            <img src="c:/Users/lenovo/Downloads/campus.jpg" alt="Campus Image">
+            <p>GITAM College is committed to providing top-quality education and fostering an environment of innovation and research. Our campus offers state-of-the-art facilities and a diverse range of academic programs designed to nurture the leaders of tomorrow.</p>
+            <p>Located in a vibrant and dynamic city, GITAM College provides a holistic learning experience, combining rigorous academics with extracurricular activities that promote personal growth and development. Our faculty consists of renowned scholars and industry experts dedicated to mentoring and guiding students to achieve their full potential.</p>
+            <p>Join us at GITAM College and embark on a journey of knowledge, discovery, and transformation. We are dedicated to equipping you with the skills and experiences necessary to excel in your chosen field and make a positive impact on society.</p>
+        </div>
+    </section>
+
+    <section id="loginSignup">
+        <div class="container">
+            <div id="loginForm" class="auth-form active">
+                <h2>Login</h2>
+                <form>
+                    <input type="email" id="loginEmail" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address.">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button type="button" onclick="login()">Login</button>
+                </form>
+            </div>
+            <div id="signupForm" class="auth-form">
+                <h2>Signup</h2>
+                <form>
+                    <input type="text" id="signupUsername" placeholder="Username" required>
+                    <input type="email" id="signupEmail" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address.">
+                    <input type="password" id="signupPassword" placeholder="Password" required>
+                    <button type="button" onclick="signup()">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="content" style="display: none;">
+        <div class="container">
+            <section id="events">
+                <h2>Upcoming Events</h2>
+                <div class="event-item">
+                    <img src="c:\Users\lenovo\Downloads\tech.jpg" alt="Annual Tech Fest">
+                    <div>
+                        <h3>Annual Tech Fest</h3>
+                        <p><strong>Date:</strong> June 15, 2024</p>
+                        <p><strong>Time:</strong> 9:00 AM - 5:00 PM</p>
+                        <p>Join us for a day of innovation, competition, and fun as we celebrate technology and creativity at our annual tech fest.</p>
+                    </div>
+                    <button onclick="removeEvent(this)">Remove</button>
+                </div>
+                <div class="event-item">
+                    <img src="c:\Users\lenovo\Downloads\culuture.jpg" alt="Cultural Fest">
+                    <div>
+                        <h3>Cultural Fest</h3>
+                        <p><strong>Date:</strong> July 10, 2024</p>
+                        <p><strong>Time:</strong> 10:00 AM - 8:00 PM</p>
+                        <p>Experience the vibrant culture and traditions of our community with performances, workshops, and more at the cultural fest.</p>
+                    </div>
+                    <button onclick="removeEvent(this)">Remove</button>
+                </div>
+            </section>
+
+            <section id="workshops">
+                <h2>Upcoming Workshops</h2>
+                <div class="event-item">
+                    <img src="c:\Users\lenovo\Downloads\data scince.jpg" alt="Data Science Workshop">
+                    <div>
+                        <h3>Data Science Workshop</h3>
+                        <p><strong>Date:</strong> June 20, 2024</p>
+                        <p><strong>Time:</strong> 2:00 PM - 6:00 PM</p>
+                        <p>Enhance your skills in data science with this hands-on workshop led by industry experts.</p>
+                    </div>
+                    <button onclick="removeEvent(this)">Remove</button>
+                </div>
+                <div class="event-item">
+                    <img src="c:\Users\lenovo\Downloads\Leadership skills.jpg" alt="Leadership Skills Workshop">
+                    <div>
+                        <h3>Leadership Skills Workshop</h3>
+                        <p><strong>Date:</strong> July 5, 2024</p>
+                        <p><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
+                        <p>Develop essential leadership skills and learn how to manage teams effectively in this interactive workshop.</p>
+                    </div>
+                    <button onclick="removeEvent(this)">Remove</button>
+                </div>
+            </section>
+
+            <section id="addEvent">
+                <h2>Add New Event</h2>
+                <form id="addEventForm">
+                    <div class="form-container">
+                        <input type="text" id="eventName" placeholder="Event Name" required>
+                        <input type="date" id="eventDate" required>
+                        <input type="time" id="eventTime" required>
+                        <textarea id="eventDescription" placeholder="Event Description" required></textarea>
+                        <input type="url" id="eventImage" placeholder="Image URL" required>
+                        <button type="button" onclick="addEvent()">Add Event</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 GITAM College. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let users = [];
+
+        function showLogin() {
+            document.getElementById('loginForm').classList.add('active');
+            document.getElementById('signupForm').classList.remove('active');
+        }
+
+        function showSignup() {
+            document.getElementById('loginForm').classList.remove('active');
+            document.getElementById('signupForm').classList.add('active');
+        }
+
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Validate email and password
+            if (!email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+
+            // Check credentials
+            const user = users.find(u => u.email === email && u.password === password);
+            if (!user) {
+                alert('Invalid email or password.');
+            } else {
+                alert('Login successful!');
+                showContent();
+            }
+        }
+
+        function signup() {
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+
+            // Validate email and password
+            if (!email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+
+            // Check if user already exists
+            if (users.find(u => u.email === email)) {
+                alert('Email already registered.');
+                return;
+            }
+
+            // Add user
+            users.push({ username, email, password });
+            alert('Signup successful! You can now login.');
+            showLogin();
+        }
+
+        function showContent() {
+            document.getElementById('loginSignup').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        function addEvent() {
+            const name = document.getElementById('eventName').value;
+            const date = document.getElementById('eventDate').value;
+            const time = document.getElementById('eventTime').value;
+            const description = document.getElementById('eventDescription').value;
+            const image = document.getElementById('eventImage').value;
+
+            if (!name || !date || !time || !description || !image) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            const eventSection = document.createElement('div');
+            eventSection.className = 'event-item';
+            eventSection.innerHTML = `
+                <img src="${image}" alt="${name}">
+                <div>
+                    <h3>${name}</h3>
+                    <p><strong>Date:</strong> ${date}</p>
+                    <p><strong>Time:</strong> ${time}</p>
+                    <p>${description}</p>
+                </div>
+                <button onclick="removeEvent(this)">Remove</button>
+            `;
+
+            document.getElementById('events').appendChild(eventSection);
+
+            document.getElementById('addEventForm').reset();
+            alert('Event added successfully!');
+        }
+
+        function removeEvent(button) {
+            const eventItem = button.parentElement;
+            eventItem.remove();
+            alert('Event removed successfully!');
+        }
+    </script>
+</body>
+</html>
